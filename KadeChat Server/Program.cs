@@ -65,6 +65,7 @@ namespace KadeChat_Server
                     else
                     {
                         // Returns the chat message into the console.
+                        lastmsg = chat;
                         ChatMsgs = ChatMsgs + "\n[" + user + "]: " + chat;
                         Console.Write("\n[" + user + "]: " + chat);
                     }
