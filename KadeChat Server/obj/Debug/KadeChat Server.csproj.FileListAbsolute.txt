@@ -1,0 +1,7 @@
+C:\Users\kadep\Documents\KadeChat\Source\KadeChat\KadeChat Server\bin\Debug\KadeChat Server.exe.config
+C:\Users\kadep\Documents\KadeChat\Source\KadeChat\KadeChat Server\bin\Debug\KadeChat Server.exe
+C:\Users\kadep\Documents\KadeChat\Source\KadeChat\KadeChat Server\bin\Debug\KadeChat Server.pdb
+C:\Users\kadep\Documents\KadeChat\Source\KadeChat\KadeChat Server\obj\Debug\KadeChat Server.csproj.CoreCompileInputs.cache
+C:\Users\kadep\Documents\KadeChat\Source\KadeChat\KadeChat Server\obj\Debug\KadeChat Server.exe
+C:\Users\kadep\Documents\KadeChat\Source\KadeChat\KadeChat Server\obj\Debug\KadeChat Server.pdb
+C:\Users\kadep\Documents\KadeChat\Source\KadeChat\KadeChat Server\obj\Debug\KadeChat Server.csprojAssemblyReference.cache
