@@ -11,9 +11,12 @@ namespace KadeChat_Server
         // Using a TCP Server do not edit the code if you don't know what your doing.
         // Also, if you do get someones ip that is fine just don't use it in a malicious way.
         // Or you can get banned.
+        // If you change any codes like 'good' or 'no msg' then the server will fail.
 
         static string ChatMsgs = "[KadeChat Server]";
         static string lastmsg;
+        static int msgnumber = 0;
+        static int lmsgnumber = 0;
         // Edit these
         static int MaxLength = 255;
         static string ServerName = "KadeChat Server";
@@ -65,6 +68,7 @@ namespace KadeChat_Server
                     else
                     {
                         // Returns the chat message into the console.
+                        msgnumber++;
                         lastmsg = chat;
                         ChatMsgs = ChatMsgs + "\n[" + user + "]: " + chat;
                         Console.Write("\n[" + user + "]: " + chat);
@@ -73,8 +77,16 @@ namespace KadeChat_Server
                 else if (data.Equals("gchat"))
                 {
                     // This returns the chat to the clients server messages.
-                    buffer = Enc.GetBytes(ChatMsgs);
-                    nwStream.Write(buffer, 0, buffer.Length);
+                    if (msgnumber >= lmsgnumber)
+                    {
+                        buffer = Enc.GetBytes(ChatMsgs);
+                        nwStream.Write(buffer, 0, buffer.Length);
+                    }
+                    else
+                    {
+                        buffer = Enc.GetBytes("no msg");
+                        nwStream.Write(buffer, 0, buffer.Length);
+                    }
                 }
                 else if (data.Equals("ping"))
                 {
