@@ -58,6 +58,10 @@ namespace KadeChat_Server
                         buffer = Enc.GetBytes("bad length");
                         nwStream.Write(buffer, 0, buffer.Length);
                     }
+                    else if (chat.Contains("       ") || chat == " " || chat.Contains("      ") || chat.Contains("      ") || chat.Contains("     ") || chat.Contains("    ") || chat.Contains("   ") || chat.Contains("   ") || chat.Contains("  "))
+                    {
+                        Console.Write("\n[" + user + "] is probly spaming Message: '" + chat + "'");
+                    }
                     else
                     {
                         // Returns the chat message into the console.
