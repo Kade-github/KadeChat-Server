@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -13,7 +13,7 @@ namespace KadeChat_Server
         // Or you can get banned.
 
         static string ChatMsgs = "[KadeChat Server]";
-
+        static string lastmsg;
         // Edit these
         static int MaxLength = 255;
         static string ServerName = "KadeChat Server";
@@ -58,7 +58,7 @@ namespace KadeChat_Server
                         buffer = Enc.GetBytes("bad length");
                         nwStream.Write(buffer, 0, buffer.Length);
                     }
-                    else if (chat.Contains("       ") || chat == " " || chat.Contains("      ") || chat.Contains("      ") || chat.Contains("     ") || chat.Contains("    ") || chat.Contains("   ") || chat.Contains("   ") || chat.Contains("  "))
+                    else if (chat.Equals(lastmsg))
                     {
                         Console.Write("\n[" + user + "] is probly spaming Message: '" + chat + "'");
                     }
