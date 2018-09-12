@@ -27,7 +27,7 @@ namespace KadeChat_Server
             // Lets assign a TCPListner to listen on port 4000. (Servers can only be on port 4000!)
             TcpListener server = new TcpListener(IPAddress.Any, 4000);
             server.Start();
-            userlist = "[" + ServerName + "]";
+            userlist = "";
             Console.Write("[Server Started]");
             while (true)
             {
