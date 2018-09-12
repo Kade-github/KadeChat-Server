@@ -15,6 +15,7 @@ namespace KadeChat_Server
 
         static string ChatMsgs = "[KadeChat Server]";
         static string lastmsg;
+        static string userlist;
         static int msgnumber = 0;
         static int lmsgnumber = 0;
         // Edit these
@@ -26,6 +27,7 @@ namespace KadeChat_Server
             // Lets assign a TCPListner to listen on port 4000. (Servers can only be on port 4000!)
             TcpListener server = new TcpListener(IPAddress.Any, 4000);
             server.Start();
+            userlist = "[" + ServerName + "]";
             Console.Write("[Server Started]");
             while (true)
             {
@@ -49,6 +51,14 @@ namespace KadeChat_Server
                 // dataReceived is the string to what the client sent.
                 string user = dataReceived.Split(',')[0];
                 string data = dataReceived.Split(',')[1];
+                // Ping Function
+                if (data.Equals("ping"))
+                {
+                    // pings back that its online.
+                    userlist = userlist + "\n" + user + "\n";
+                    buffer = Enc.GetBytes("good");
+                    nwStream.Write(buffer, 0, buffer.Length);
+                }
                 // Commands/Functions
                 if (data.Equals("chat"))
                 {
@@ -74,6 +84,12 @@ namespace KadeChat_Server
                         Console.Write("\n[" + user + "]: " + chat);
                     }
                 }
+                else if (data.Equals("gusers"))
+                {
+                    // This returns the chat to the clients server messages.
+                    buffer = Enc.GetBytes(userlist);
+                    nwStream.Write(buffer, 0, buffer.Length);
+                }
                 else if (data.Equals("gchat"))
                 {
                     // This returns the chat to the clients server messages.
@@ -87,12 +103,6 @@ namespace KadeChat_Server
                         buffer = Enc.GetBytes("no msg");
                         nwStream.Write(buffer, 0, buffer.Length);
                     }
-                }
-                else if (data.Equals("ping"))
-                {
-                    // pings back that its online.
-                    buffer = Enc.GetBytes("good");
-                    nwStream.Write(buffer, 0, buffer.Length);
                 }
                 else if (data.Equals("gserver"))
                 {
